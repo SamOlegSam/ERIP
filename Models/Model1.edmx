@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ERIPModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_Client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="n_f" Type="nvarchar" MaxLength="29" />
+          <Property Name="n_i" Type="nvarchar" MaxLength="29" />
+          <Property Name="n_o" Type="nvarchar" MaxLength="29" />
+          <Property Name="addr" Type="nvarchar" MaxLength="99" />
+          <Property Name="prim" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="S_Device">
+          <Key>
+            <PropertyRef Name="id_device" />
+          </Key>
+          <Property Name="id_device" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="coddev" Type="char" MaxLength="2" />
+          <Property Name="n_device" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="S_Usluga">
+          <Key>
+            <PropertyRef Name="id_Usluga" />
+          </Key>
+          <Property Name="id_Usluga" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ucode" Type="char" MaxLength="8" />
+          <Property Name="ucodes" Type="char" MaxLength="4" />
+          <Property Name="n_usl" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_204">
+          <Key>
+            <PropertyRef Name="id_204" />
+          </Key>
+          <Property Name="id_204" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="vers" Type="char" MaxLength="1" />
+          <Property Name="codotpr" Type="char" MaxLength="8" />
+          <Property Name="notv" Type="char" MaxLength="8" />
+          <Property Name="datotv" Type="char" MaxLength="14" />
+          <Property Name="msgnum" Type="char" MaxLength="8" />
+          <Property Name="msgdat" Type="char" MaxLength="14" />
+          <Property Name="result" Type="nchar" MaxLength="3" />
+          <Property Name="errmsg" Type="nvarchar" MaxLength="255" />
+          <Property Name="id_fromerip" Type="uniqueidentifier" />
+          <Property Name="dent" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_From210">
+          <Key>
+            <PropertyRef Name="id_from" />
+          </Key>
+          <Property Name="id_from" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="n_msg" Type="nvarchar" MaxLength="2048" />
+          <Property Name="dv" Type="char" MaxLength="32" />
+          <Property Name="n_filename" Type="char" MaxLength="255" />
+          <Property Name="isHeader" Type="char" MaxLength="1" />
+          <Property Name="complete" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_FromERIP">
+          <Key>
+            <PropertyRef Name="id_fromerip" />
+          </Key>
+          <Property Name="id_fromerip" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="n_msg" Type="nvarchar" MaxLength="4000" />
+          <Property Name="dv" Type="char" MaxLength="32" />
+          <Property Name="n_filename" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="T_Payments">
+          <Key>
+            <PropertyRef Name="id_payments" />
+          </Key>
+          <Property Name="id_payments" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="vers" Type="char" MaxLength="3" />
+          <Property Name="aboncode" Type="char" MaxLength="10" />
+          <Property Name="msgnum" Type="char" MaxLength="8" />
+          <Property Name="msgdate" Type="char" MaxLength="14" />
+          <Property Name="unp" Type="char" MaxLength="9" />
+          <Property Name="mfo" Type="char" MaxLength="3" />
+          <Property Name="rsschet" Type="char" MaxLength="28" />
+          <Property Name="nusl" Type="char" MaxLength="8" />
+          <Property Name="valcode" Type="char" MaxLength="3" />
+          <Property Name="lsnum" Type="char" MaxLength="16" />
+          <Property Name="fio" Type="nvarchar" MaxLength="128" />
+          <Property Name="addr" Type="nvarchar" MaxLength="255" />
+          <Property Name="paysum" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paydescr" Type="nvarchar" MaxLength="500" />
+          <Property Name="flag" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dent" Type="datetime" />
+          <Property Name="dlast" Type="datetime" />
+          <Property Name="id_toerip" Type="uniqueidentifier" />
+          <Property Name="zachsum" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="auths" Type="char" MaxLength="10" />
+          <Property Name="cartnum" Type="char" MaxLength="30" />
+          <Property Name="devtype" Type="char" MaxLength="2" />
+          <Property Name="numoper" Type="char" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="T_ToERIP">
+          <Key>
+            <PropertyRef Name="id_toerip" />
+          </Key>
+          <Property Name="id_toerip" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="n_msg" Type="nvarchar" MaxLength="2048" />
+          <Property Name="dv" Type="char" MaxLength="32" />
+          <Property Name="n_filename" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "ERIP.dbo.V_FULL" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="V_FULL">
+          <Key>
+            <PropertyRef Name="id_payments" />
+            <PropertyRef Name="flg" />
+          </Key>
+          <Property Name="id_payments" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="msgnum" Type="char" MaxLength="8" />
+          <Property Name="msgDT" Type="char" MaxLength="19" />
+          <Property Name="usluga" Type="nvarchar" MaxLength="128" />
+          <Property Name="lsnum" Type="char" MaxLength="8" />
+          <Property Name="fio" Type="nvarchar" MaxLength="128" />
+          <Property Name="paysum" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paydescr" Type="nvarchar" MaxLength="500" />
+          <Property Name="flg" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="dlast" Type="datetime" />
+          <Property Name="zachsum" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="numoper" Type="char" MaxLength="11" />
+          <Property Name="nusl" Type="char" MaxLength="8" />
+          <Property Name="msgdate" Type="char" MaxLength="14" />
+        </EntityType>
+        <Function Name="dt_addtosourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchSourceSafeINI" Type="varchar" Mode="In" />
+          <Parameter Name="vchProjectName" Type="varchar" Mode="In" />
+          <Parameter Name="vchComment" Type="varchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_addtosourcecontrol_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchSourceSafeINI" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchProjectName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="dt_adduserobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="dt_adduserobject_vcs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchProperty" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_checkinobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+          <Parameter Name="vchComment" Type="varchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+          <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+          <Parameter Name="iActionFlag" Type="int" Mode="In" />
+          <Parameter Name="txStream1" Type="text" Mode="In" />
+          <Parameter Name="txStream2" Type="text" Mode="In" />
+          <Parameter Name="txStream3" Type="text" Mode="In" />
+        </Function>
+        <Function Name="dt_checkinobject_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+          <Parameter Name="iActionFlag" Type="int" Mode="In" />
+          <Parameter Name="txStream1" Type="text" Mode="In" />
+          <Parameter Name="txStream2" Type="text" Mode="In" />
+          <Parameter Name="txStream3" Type="text" Mode="In" />
+        </Function>
+        <Function Name="dt_checkoutobject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+          <Parameter Name="vchComment" Type="varchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+          <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+          <Parameter Name="iActionFlag" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_checkoutobject_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchComment" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="iVCSFlags" Type="int" Mode="In" />
+          <Parameter Name="iActionFlag" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_displayoaerror" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iObject" Type="int" Mode="In" />
+          <Parameter Name="iresult" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_displayoaerror_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iObject" Type="int" Mode="In" />
+          <Parameter Name="iresult" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_droppropertiesbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_dropuserobjectbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_generateansiname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="dt_getobjwithprop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="value" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_getobjwithprop_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="uvalue" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="dt_getpropertiesbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_getpropertiesbyid_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_getpropertiesbyid_vcs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="value" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="dt_getpropertiesbyid_vcs_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="value" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="dt_isundersourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+          <Parameter Name="iWhoToo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_isundersourcecontrol_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="iWhoToo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="dt_removefromsourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="dt_setpropertybyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="value" Type="varchar" Mode="In" />
+          <Parameter Name="lvalue" Type="image" Mode="In" />
+        </Function>
+        <Function Name="dt_setpropertybyid_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="property" Type="varchar" Mode="In" />
+          <Parameter Name="uvalue" Type="nvarchar" Mode="In" />
+          <Parameter Name="lvalue" Type="image" Mode="In" />
+        </Function>
+        <Function Name="dt_validateloginparams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_validateloginparams_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="dt_vcsenabled" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="dt_verstamp006" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="dt_whocheckedout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="varchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="varchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="dt_whocheckedout_u" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="chObjectType" Type="char" Mode="In" />
+          <Parameter Name="vchObjectName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchLoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="vchPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище ERIPModelContainer">
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Client" EntityType="Self.S_Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Device" EntityType="Self.S_Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="S_Usluga" EntityType="Self.S_Usluga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_204" EntityType="Self.T_204" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_From210" EntityType="Self.T_From210" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_FromERIP" EntityType="Self.T_FromERIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Payments" EntityType="Self.T_Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ToERIP" EntityType="Self.T_ToERIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_FULL" EntityType="Self.V_FULL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_FULL].[id_payments] AS [id_payments], 
+    [V_FULL].[msgnum] AS [msgnum], 
+    [V_FULL].[msgDT] AS [msgDT], 
+    [V_FULL].[usluga] AS [usluga], 
+    [V_FULL].[lsnum] AS [lsnum], 
+    [V_FULL].[fio] AS [fio], 
+    [V_FULL].[paysum] AS [paysum], 
+    [V_FULL].[paydescr] AS [paydescr], 
+    [V_FULL].[flg] AS [flg], 
+    [V_FULL].[dlast] AS [dlast], 
+    [V_FULL].[zachsum] AS [zachsum], 
+    [V_FULL].[numoper] AS [numoper], 
+    [V_FULL].[nusl] AS [nusl], 
+    [V_FULL].[msgdate] AS [msgdate]
+    FROM [dbo].[V_FULL] AS [V_FULL]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERIPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="S_Client">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Guid" Nullable="false" />
+          <Property Name="n_f" Type="String" MaxLength="29" FixedLength="false" Unicode="true" />
+          <Property Name="n_i" Type="String" MaxLength="29" FixedLength="false" Unicode="true" />
+          <Property Name="n_o" Type="String" MaxLength="29" FixedLength="false" Unicode="true" />
+          <Property Name="addr" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+          <Property Name="prim" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Device">
+          <Key>
+            <PropertyRef Name="id_device" />
+          </Key>
+          <Property Name="id_device" Type="Guid" Nullable="false" />
+          <Property Name="coddev" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="n_device" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="S_Usluga">
+          <Key>
+            <PropertyRef Name="id_Usluga" />
+          </Key>
+          <Property Name="id_Usluga" Type="Guid" Nullable="false" />
+          <Property Name="ucode" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="ucodes" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="n_usl" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_204">
+          <Key>
+            <PropertyRef Name="id_204" />
+          </Key>
+          <Property Name="id_204" Type="Guid" Nullable="false" />
+          <Property Name="vers" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="codotpr" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="notv" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="datotv" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="msgnum" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="msgdat" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="result" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="errmsg" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="id_fromerip" Type="Guid" />
+          <Property Name="dent" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_From210">
+          <Key>
+            <PropertyRef Name="id_from" />
+          </Key>
+          <Property Name="id_from" Type="Guid" Nullable="false" />
+          <Property Name="n_msg" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="dv" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="n_filename" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="isHeader" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="complete" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_FromERIP">
+          <Key>
+            <PropertyRef Name="id_fromerip" />
+          </Key>
+          <Property Name="id_fromerip" Type="Guid" Nullable="false" />
+          <Property Name="n_msg" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="dv" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="n_filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Payments">
+          <Key>
+            <PropertyRef Name="id_payments" />
+          </Key>
+          <Property Name="id_payments" Type="Guid" Nullable="false" />
+          <Property Name="vers" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="aboncode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="msgnum" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="msgdate" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="unp" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="mfo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="rsschet" Type="String" MaxLength="28" FixedLength="true" Unicode="false" />
+          <Property Name="nusl" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="valcode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="lsnum" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="fio" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="addr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="paysum" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paydescr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="flag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dent" Type="DateTime" Precision="3" />
+          <Property Name="dlast" Type="DateTime" Precision="3" />
+          <Property Name="id_toerip" Type="Guid" />
+          <Property Name="zachsum" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="auths" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cartnum" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="devtype" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="numoper" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_ToERIP">
+          <Key>
+            <PropertyRef Name="id_toerip" />
+          </Key>
+          <Property Name="id_toerip" Type="Guid" Nullable="false" />
+          <Property Name="n_msg" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="dv" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="n_filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_FULL">
+          <Key>
+            <PropertyRef Name="id_payments" />
+            <PropertyRef Name="flg" />
+          </Key>
+          <Property Name="id_payments" Type="Guid" Nullable="false" />
+          <Property Name="msgnum" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="msgDT" Type="String" MaxLength="19" FixedLength="true" Unicode="false" />
+          <Property Name="usluga" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="lsnum" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="fio" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="paysum" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paydescr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="flg" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dlast" Type="DateTime" Precision="3" />
+          <Property Name="zachsum" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="numoper" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="nusl" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="msgdate" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ERIPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" />
+          <EntitySet Name="S_Client" EntityType="Self.S_Client" />
+          <EntitySet Name="S_Device" EntityType="Self.S_Device" />
+          <EntitySet Name="S_Usluga" EntityType="Self.S_Usluga" />
+          <EntitySet Name="T_204" EntityType="Self.T_204" />
+          <EntitySet Name="T_From210" EntityType="Self.T_From210" />
+          <EntitySet Name="T_FromERIP" EntityType="Self.T_FromERIP" />
+          <EntitySet Name="T_Payments" EntityType="Self.T_Payments" />
+          <EntitySet Name="T_ToERIP" EntityType="Self.T_ToERIP" />
+          <EntitySet Name="V_FULL" EntityType="Self.V_FULL" />
+          <FunctionImport Name="dt_addtosourcecontrol">
+            <Parameter Name="vchSourceSafeINI" Mode="In" Type="String" />
+            <Parameter Name="vchProjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_addtosourcecontrol_u">
+            <Parameter Name="vchSourceSafeINI" Mode="In" Type="String" />
+            <Parameter Name="vchProjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_adduserobject" />
+          <FunctionImport Name="dt_adduserobject_vcs">
+            <Parameter Name="vchProperty" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_checkinobject">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iVCSFlags" Mode="In" Type="Int32" />
+            <Parameter Name="iActionFlag" Mode="In" Type="Int32" />
+            <Parameter Name="txStream1" Mode="In" Type="String" />
+            <Parameter Name="txStream2" Mode="In" Type="String" />
+            <Parameter Name="txStream3" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_checkinobject_u">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iVCSFlags" Mode="In" Type="Int32" />
+            <Parameter Name="iActionFlag" Mode="In" Type="Int32" />
+            <Parameter Name="txStream1" Mode="In" Type="String" />
+            <Parameter Name="txStream2" Mode="In" Type="String" />
+            <Parameter Name="txStream3" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_checkoutobject">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iVCSFlags" Mode="In" Type="Int32" />
+            <Parameter Name="iActionFlag" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_checkoutobject_u">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchComment" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iVCSFlags" Mode="In" Type="Int32" />
+            <Parameter Name="iActionFlag" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_displayoaerror">
+            <Parameter Name="iObject" Mode="In" Type="Int32" />
+            <Parameter Name="iresult" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_displayoaerror_u">
+            <Parameter Name="iObject" Mode="In" Type="Int32" />
+            <Parameter Name="iresult" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_droppropertiesbyid">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_dropuserobjectbyid">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_generateansiname">
+            <Parameter Name="name" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="value" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getobjwithprop_u" ReturnType="Collection(Int32)">
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="uvalue" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getpropertiesbyid" ReturnType="Collection(ERIPModel.dt_getpropertiesbyid_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getpropertiesbyid_u" ReturnType="Collection(ERIPModel.dt_getpropertiesbyid_u_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getpropertiesbyid_vcs">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="value" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_getpropertiesbyid_vcs_u">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="value" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_isundersourcecontrol">
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iWhoToo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_isundersourcecontrol_u">
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+            <Parameter Name="iWhoToo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="dt_removefromsourcecontrol" />
+          <FunctionImport Name="dt_setpropertybyid">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="value" Mode="In" Type="String" />
+            <Parameter Name="lvalue" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="dt_setpropertybyid_u">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="property" Mode="In" Type="String" />
+            <Parameter Name="uvalue" Mode="In" Type="String" />
+            <Parameter Name="lvalue" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="dt_validateloginparams">
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_validateloginparams_u">
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_vcsenabled" />
+          <FunctionImport Name="dt_verstamp006" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="dt_whocheckedout">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="dt_whocheckedout_u">
+            <Parameter Name="chObjectType" Mode="In" Type="String" />
+            <Parameter Name="vchObjectName" Mode="In" Type="String" />
+            <Parameter Name="vchLoginName" Mode="In" Type="String" />
+            <Parameter Name="vchPassword" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="dt_getpropertiesbyid_Result">
+          <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="version" Nullable="false" />
+          <Property Type="String" Name="value" Nullable="true" MaxLength="255" />
+          <Property Type="Binary" Name="lvalue" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="dt_getpropertiesbyid_u_Result">
+          <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="version" Nullable="false" />
+          <Property Type="String" Name="uvalue" Nullable="true" MaxLength="255" />
+          <Property Type="Binary" Name="lvalue" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ERIPModelContainer" CdmEntityContainer="ERIPEntities">
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="ERIPModel.dtproperties">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="version" ColumnName="version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Client">
+            <EntityTypeMapping TypeName="ERIPModel.S_Client">
+              <MappingFragment StoreEntitySet="S_Client">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="n_f" ColumnName="n_f" />
+                <ScalarProperty Name="n_i" ColumnName="n_i" />
+                <ScalarProperty Name="n_o" ColumnName="n_o" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="prim" ColumnName="prim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Device">
+            <EntityTypeMapping TypeName="ERIPModel.S_Device">
+              <MappingFragment StoreEntitySet="S_Device">
+                <ScalarProperty Name="id_device" ColumnName="id_device" />
+                <ScalarProperty Name="coddev" ColumnName="coddev" />
+                <ScalarProperty Name="n_device" ColumnName="n_device" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="S_Usluga">
+            <EntityTypeMapping TypeName="ERIPModel.S_Usluga">
+              <MappingFragment StoreEntitySet="S_Usluga">
+                <ScalarProperty Name="id_Usluga" ColumnName="id_Usluga" />
+                <ScalarProperty Name="ucode" ColumnName="ucode" />
+                <ScalarProperty Name="ucodes" ColumnName="ucodes" />
+                <ScalarProperty Name="n_usl" ColumnName="n_usl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_204">
+            <EntityTypeMapping TypeName="ERIPModel.T_204">
+              <MappingFragment StoreEntitySet="T_204">
+                <ScalarProperty Name="id_204" ColumnName="id_204" />
+                <ScalarProperty Name="vers" ColumnName="vers" />
+                <ScalarProperty Name="codotpr" ColumnName="codotpr" />
+                <ScalarProperty Name="notv" ColumnName="notv" />
+                <ScalarProperty Name="datotv" ColumnName="datotv" />
+                <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+                <ScalarProperty Name="msgdat" ColumnName="msgdat" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="errmsg" ColumnName="errmsg" />
+                <ScalarProperty Name="id_fromerip" ColumnName="id_fromerip" />
+                <ScalarProperty Name="dent" ColumnName="dent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_From210">
+            <EntityTypeMapping TypeName="ERIPModel.T_From210">
+              <MappingFragment StoreEntitySet="T_From210">
+                <ScalarProperty Name="id_from" ColumnName="id_from" />
+                <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+                <ScalarProperty Name="dv" ColumnName="dv" />
+                <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+                <ScalarProperty Name="isHeader" ColumnName="isHeader" />
+                <ScalarProperty Name="complete" ColumnName="complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_FromERIP">
+            <EntityTypeMapping TypeName="ERIPModel.T_FromERIP">
+              <MappingFragment StoreEntitySet="T_FromERIP">
+                <ScalarProperty Name="id_fromerip" ColumnName="id_fromerip" />
+                <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+                <ScalarProperty Name="dv" ColumnName="dv" />
+                <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Payments">
+            <EntityTypeMapping TypeName="ERIPModel.T_Payments">
+              <MappingFragment StoreEntitySet="T_Payments">
+                <ScalarProperty Name="id_payments" ColumnName="id_payments" />
+                <ScalarProperty Name="vers" ColumnName="vers" />
+                <ScalarProperty Name="aboncode" ColumnName="aboncode" />
+                <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+                <ScalarProperty Name="msgdate" ColumnName="msgdate" />
+                <ScalarProperty Name="unp" ColumnName="unp" />
+                <ScalarProperty Name="mfo" ColumnName="mfo" />
+                <ScalarProperty Name="rsschet" ColumnName="rsschet" />
+                <ScalarProperty Name="nusl" ColumnName="nusl" />
+                <ScalarProperty Name="valcode" ColumnName="valcode" />
+                <ScalarProperty Name="lsnum" ColumnName="lsnum" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="paysum" ColumnName="paysum" />
+                <ScalarProperty Name="paydescr" ColumnName="paydescr" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="dent" ColumnName="dent" />
+                <ScalarProperty Name="dlast" ColumnName="dlast" />
+                <ScalarProperty Name="id_toerip" ColumnName="id_toerip" />
+                <ScalarProperty Name="zachsum" ColumnName="zachsum" />
+                <ScalarProperty Name="auths" ColumnName="auths" />
+                <ScalarProperty Name="cartnum" ColumnName="cartnum" />
+                <ScalarProperty Name="devtype" ColumnName="devtype" />
+                <ScalarProperty Name="numoper" ColumnName="numoper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ToERIP">
+            <EntityTypeMapping TypeName="ERIPModel.T_ToERIP">
+              <MappingFragment StoreEntitySet="T_ToERIP">
+                <ScalarProperty Name="id_toerip" ColumnName="id_toerip" />
+                <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+                <ScalarProperty Name="dv" ColumnName="dv" />
+                <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_FULL">
+            <EntityTypeMapping TypeName="ERIPModel.V_FULL">
+              <MappingFragment StoreEntitySet="V_FULL">
+                <ScalarProperty Name="id_payments" ColumnName="id_payments" />
+                <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+                <ScalarProperty Name="msgDT" ColumnName="msgDT" />
+                <ScalarProperty Name="usluga" ColumnName="usluga" />
+                <ScalarProperty Name="lsnum" ColumnName="lsnum" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="paysum" ColumnName="paysum" />
+                <ScalarProperty Name="paydescr" ColumnName="paydescr" />
+                <ScalarProperty Name="flg" ColumnName="flg" />
+                <ScalarProperty Name="dlast" ColumnName="dlast" />
+                <ScalarProperty Name="zachsum" ColumnName="zachsum" />
+                <ScalarProperty Name="numoper" ColumnName="numoper" />
+                <ScalarProperty Name="nusl" ColumnName="nusl" />
+                <ScalarProperty Name="msgdate" ColumnName="msgdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol" FunctionName="Хранилище ERIPModel.dt_addtosourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol_u" FunctionName="Хранилище ERIPModel.dt_addtosourcecontrol_u" />
+          <FunctionImportMapping FunctionImportName="dt_adduserobject" FunctionName="Хранилище ERIPModel.dt_adduserobject" />
+          <FunctionImportMapping FunctionImportName="dt_adduserobject_vcs" FunctionName="Хранилище ERIPModel.dt_adduserobject_vcs" />
+          <FunctionImportMapping FunctionImportName="dt_checkinobject" FunctionName="Хранилище ERIPModel.dt_checkinobject" />
+          <FunctionImportMapping FunctionImportName="dt_checkinobject_u" FunctionName="Хранилище ERIPModel.dt_checkinobject_u" />
+          <FunctionImportMapping FunctionImportName="dt_checkoutobject" FunctionName="Хранилище ERIPModel.dt_checkoutobject" />
+          <FunctionImportMapping FunctionImportName="dt_checkoutobject_u" FunctionName="Хранилище ERIPModel.dt_checkoutobject_u" />
+          <FunctionImportMapping FunctionImportName="dt_displayoaerror" FunctionName="Хранилище ERIPModel.dt_displayoaerror" />
+          <FunctionImportMapping FunctionImportName="dt_displayoaerror_u" FunctionName="Хранилище ERIPModel.dt_displayoaerror_u" />
+          <FunctionImportMapping FunctionImportName="dt_droppropertiesbyid" FunctionName="Хранилище ERIPModel.dt_droppropertiesbyid" />
+          <FunctionImportMapping FunctionImportName="dt_dropuserobjectbyid" FunctionName="Хранилище ERIPModel.dt_dropuserobjectbyid" />
+          <FunctionImportMapping FunctionImportName="dt_generateansiname" FunctionName="Хранилище ERIPModel.dt_generateansiname" />
+          <FunctionImportMapping FunctionImportName="dt_getobjwithprop" FunctionName="Хранилище ERIPModel.dt_getobjwithprop" />
+          <FunctionImportMapping FunctionImportName="dt_getobjwithprop_u" FunctionName="Хранилище ERIPModel.dt_getobjwithprop_u" />
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERIPModel.dt_getpropertiesbyid_Result">
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_u" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_u">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERIPModel.dt_getpropertiesbyid_u_Result">
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_vcs" />
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs_u" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_vcs_u" />
+          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol" FunctionName="Хранилище ERIPModel.dt_isundersourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol_u" FunctionName="Хранилище ERIPModel.dt_isundersourcecontrol_u" />
+          <FunctionImportMapping FunctionImportName="dt_removefromsourcecontrol" FunctionName="Хранилище ERIPModel.dt_removefromsourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_setpropertybyid" FunctionName="Хранилище ERIPModel.dt_setpropertybyid" />
+          <FunctionImportMapping FunctionImportName="dt_setpropertybyid_u" FunctionName="Хранилище ERIPModel.dt_setpropertybyid_u" />
+          <FunctionImportMapping FunctionImportName="dt_validateloginparams" FunctionName="Хранилище ERIPModel.dt_validateloginparams" />
+          <FunctionImportMapping FunctionImportName="dt_validateloginparams_u" FunctionName="Хранилище ERIPModel.dt_validateloginparams_u" />
+          <FunctionImportMapping FunctionImportName="dt_vcsenabled" FunctionName="Хранилище ERIPModel.dt_vcsenabled" />
+          <FunctionImportMapping FunctionImportName="dt_verstamp006" FunctionName="Хранилище ERIPModel.dt_verstamp006" />
+          <FunctionImportMapping FunctionImportName="dt_whocheckedout" FunctionName="Хранилище ERIPModel.dt_whocheckedout" />
+          <FunctionImportMapping FunctionImportName="dt_whocheckedout_u" FunctionName="Хранилище ERIPModel.dt_whocheckedout_u" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Erip.Models.V_FULL>
+
+    <style type="text/css">
+        TH {
+            background: #EFF5FB; /* Цвет фона */
+            border-bottom: double;
+        }
+
+        tr:nth-child(odd) {
+            background: #EFF5FB; /* Цвет фона */
+        }
+
+        tr:nth-child(even) {
+            background: #ffffff; /* Цвет фона */
+        }
+    </style>
+    <table class="table">
+
+        <tr>
+
+            <th>
+                <center>Дата</center>
+            </th>
+            <th>
+                <center>Услуга</center>
+            </th>
+            <th>
+                <center>ФИО</center>
+            </th>
+            <th>
+                <center>Сумма</center>
+            </th>
+            <th>
+                <center>Дата</center>
+            </th>
+            <th>
+                <center>Стоимость</center>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.msgDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usluga)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.fio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paysum)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlast)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zachsum)
+                </td>
+
+            </tr>
+        }
+    </table>

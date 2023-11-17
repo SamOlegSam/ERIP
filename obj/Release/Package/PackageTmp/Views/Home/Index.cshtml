@@ -1,0 +1,221 @@
+﻿@model IEnumerable<Erip.Models.V_FULL>
+@*@model IEnumerable<Erip.Models.V_FULL>*@
+
+    @*<style>
+
+        .loader {
+            overflow: hidden;
+            font-size: 5px;
+            margin: 50px auto;
+            text-indent: -9999em;
+            width: 11em;
+            height: 11em;
+            border-radius: 50%;
+            background: #4682B4;
+            background: -moz-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+            background: -webkit-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+            background: -o-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+            background: -ms-linear-gradient(left, #4682B4 10%, rgba(101,171,248, 0) 42%);
+            background: linear-gradient(to right, #4682B4 10%, rgba(101,171,248, 0) 42%);
+            position: relative;
+            -webkit-animation: load3 1.4s infinite linear;
+            animation: load3 1.4s infinite linear;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+            .loader:before {
+                width: 50%;
+                height: 50%;
+                background: #4682B4;
+                border-radius: 100% 0 0 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+            }
+
+            .loader:after {
+                background: white;
+                width: 75%;
+                height: 75%;
+                border-radius: 50%;
+                content: '';
+                margin: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+        @@-webkit-keyframes load3 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes load3 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>*@
+
+<div id="ServicesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content" id='ServicesModalContent'>
+
+        </div>
+    </div>
+</div>
+
+<div id="ServicesModalDelete" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id='ServicesModalDeleteContent'>
+
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    TH {
+        background: #EFF5FB; /* Цвет фона */
+        border-bottom: double;
+    }
+
+    tr:nth-child(odd) {
+        background: #EFF5FB; /* Цвет фона */
+    }
+
+    tr:nth-child(even) {
+        background: #ffffff; /* Цвет фона */
+    }
+</style>
+
+@*<div style="float:left;">
+    <img src="\Images\Druj.png" style="width:70px;">
+    </div>*@
+
+<div>
+    <h4 style="color:blue;"><a href="/Home/Index/">Услуги ЕРИП ОАО "Гомельтранснефть Дружба"</a></h4>
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            <center>С</center>
+        </th>
+        <th>
+            <center>По</center>
+        </th>
+        <th>
+            <center>Услуга</center>
+        </th>
+        <th>
+
+        </th>
+        
+        <th>
+
+        </th>
+    </tr>
+
+    <tr>
+
+        <th>
+            <input type="date" class="form-control" id="dataS" value="@DateTime.Today.Date.ToShortDateString()" >
+        </th>
+        <th>
+            <input type="date" class="form-control" id="dataPo">
+        </th>
+
+        
+
+        <th>
+            @Html.DropDownList("S_Usluga", ViewBag.usluga as SelectList, "Выберите услугу", new { @class = "form-control btn-block", id = "usluga" })
+        </th>
+        <th>
+            <button type="submit" class="btn btn-secondary" style="min-width:100px" onclick="forfilter()">Применить фильтр</button>
+        </th>
+        <th>
+            <button type="submit" class="btn btn-secondary" style="min-width:100px" onclick="Export()">Отчет в Excel</button>
+        </th>
+    </tr>
+</table>
+
+
+    @*<table class="table">
+        <tr>
+
+            <th>
+                <center>Дата</center>
+            </th>
+            <th>
+                <center>Услуга</center>
+            </th>
+            <th>
+                <center>ФИО</center>
+            </th>
+            <th>
+                <center>Сумма</center>
+            </th>
+            <th>
+                <center>Дата</center>
+            </th>
+            <th>
+                <center>Стоимость</center>
+            </th>
+            <th></th>
+        </tr>*@
+
+        
+        @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.msgDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usluga)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.fio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paysum)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.dlast)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zachsum)
+                </td>
+
+            </tr>
+        }*@
+
+    @*</table>*@
+<center>
+    <div class="loader" id="loadImg" style="display:none;">
+    </div>
+</center>
+<div id="filter">
+
+</div>

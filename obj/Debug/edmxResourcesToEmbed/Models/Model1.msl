@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ERIPModelContainer" CdmEntityContainer="ERIPEntities">
+    <EntitySetMapping Name="dtproperties">
+      <EntityTypeMapping TypeName="ERIPModel.dtproperties">
+        <MappingFragment StoreEntitySet="dtproperties">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="objectid" ColumnName="objectid" />
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Client">
+      <EntityTypeMapping TypeName="ERIPModel.S_Client">
+        <MappingFragment StoreEntitySet="S_Client">
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="n_f" ColumnName="n_f" />
+          <ScalarProperty Name="n_i" ColumnName="n_i" />
+          <ScalarProperty Name="n_o" ColumnName="n_o" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="prim" ColumnName="prim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Device">
+      <EntityTypeMapping TypeName="ERIPModel.S_Device">
+        <MappingFragment StoreEntitySet="S_Device">
+          <ScalarProperty Name="id_device" ColumnName="id_device" />
+          <ScalarProperty Name="coddev" ColumnName="coddev" />
+          <ScalarProperty Name="n_device" ColumnName="n_device" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Usluga">
+      <EntityTypeMapping TypeName="ERIPModel.S_Usluga">
+        <MappingFragment StoreEntitySet="S_Usluga">
+          <ScalarProperty Name="id_Usluga" ColumnName="id_Usluga" />
+          <ScalarProperty Name="ucode" ColumnName="ucode" />
+          <ScalarProperty Name="ucodes" ColumnName="ucodes" />
+          <ScalarProperty Name="n_usl" ColumnName="n_usl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_204">
+      <EntityTypeMapping TypeName="ERIPModel.T_204">
+        <MappingFragment StoreEntitySet="T_204">
+          <ScalarProperty Name="id_204" ColumnName="id_204" />
+          <ScalarProperty Name="vers" ColumnName="vers" />
+          <ScalarProperty Name="codotpr" ColumnName="codotpr" />
+          <ScalarProperty Name="notv" ColumnName="notv" />
+          <ScalarProperty Name="datotv" ColumnName="datotv" />
+          <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+          <ScalarProperty Name="msgdat" ColumnName="msgdat" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="errmsg" ColumnName="errmsg" />
+          <ScalarProperty Name="id_fromerip" ColumnName="id_fromerip" />
+          <ScalarProperty Name="dent" ColumnName="dent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_From210">
+      <EntityTypeMapping TypeName="ERIPModel.T_From210">
+        <MappingFragment StoreEntitySet="T_From210">
+          <ScalarProperty Name="id_from" ColumnName="id_from" />
+          <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+          <ScalarProperty Name="isHeader" ColumnName="isHeader" />
+          <ScalarProperty Name="complete" ColumnName="complete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_FromERIP">
+      <EntityTypeMapping TypeName="ERIPModel.T_FromERIP">
+        <MappingFragment StoreEntitySet="T_FromERIP">
+          <ScalarProperty Name="id_fromerip" ColumnName="id_fromerip" />
+          <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Payments">
+      <EntityTypeMapping TypeName="ERIPModel.T_Payments">
+        <MappingFragment StoreEntitySet="T_Payments">
+          <ScalarProperty Name="id_payments" ColumnName="id_payments" />
+          <ScalarProperty Name="vers" ColumnName="vers" />
+          <ScalarProperty Name="aboncode" ColumnName="aboncode" />
+          <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+          <ScalarProperty Name="msgdate" ColumnName="msgdate" />
+          <ScalarProperty Name="unp" ColumnName="unp" />
+          <ScalarProperty Name="mfo" ColumnName="mfo" />
+          <ScalarProperty Name="rsschet" ColumnName="rsschet" />
+          <ScalarProperty Name="nusl" ColumnName="nusl" />
+          <ScalarProperty Name="valcode" ColumnName="valcode" />
+          <ScalarProperty Name="lsnum" ColumnName="lsnum" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="paysum" ColumnName="paysum" />
+          <ScalarProperty Name="paydescr" ColumnName="paydescr" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="dent" ColumnName="dent" />
+          <ScalarProperty Name="dlast" ColumnName="dlast" />
+          <ScalarProperty Name="id_toerip" ColumnName="id_toerip" />
+          <ScalarProperty Name="zachsum" ColumnName="zachsum" />
+          <ScalarProperty Name="auths" ColumnName="auths" />
+          <ScalarProperty Name="cartnum" ColumnName="cartnum" />
+          <ScalarProperty Name="devtype" ColumnName="devtype" />
+          <ScalarProperty Name="numoper" ColumnName="numoper" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ToERIP">
+      <EntityTypeMapping TypeName="ERIPModel.T_ToERIP">
+        <MappingFragment StoreEntitySet="T_ToERIP">
+          <ScalarProperty Name="id_toerip" ColumnName="id_toerip" />
+          <ScalarProperty Name="n_msg" ColumnName="n_msg" />
+          <ScalarProperty Name="dv" ColumnName="dv" />
+          <ScalarProperty Name="n_filename" ColumnName="n_filename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_FULL">
+      <EntityTypeMapping TypeName="ERIPModel.V_FULL">
+        <MappingFragment StoreEntitySet="V_FULL">
+          <ScalarProperty Name="id_payments" ColumnName="id_payments" />
+          <ScalarProperty Name="msgnum" ColumnName="msgnum" />
+          <ScalarProperty Name="msgDT" ColumnName="msgDT" />
+          <ScalarProperty Name="usluga" ColumnName="usluga" />
+          <ScalarProperty Name="lsnum" ColumnName="lsnum" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="paysum" ColumnName="paysum" />
+          <ScalarProperty Name="paydescr" ColumnName="paydescr" />
+          <ScalarProperty Name="flg" ColumnName="flg" />
+          <ScalarProperty Name="dlast" ColumnName="dlast" />
+          <ScalarProperty Name="zachsum" ColumnName="zachsum" />
+          <ScalarProperty Name="numoper" ColumnName="numoper" />
+          <ScalarProperty Name="nusl" ColumnName="nusl" />
+          <ScalarProperty Name="msgdate" ColumnName="msgdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol" FunctionName="Хранилище ERIPModel.dt_addtosourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol_u" FunctionName="Хранилище ERIPModel.dt_addtosourcecontrol_u" />
+    <FunctionImportMapping FunctionImportName="dt_adduserobject" FunctionName="Хранилище ERIPModel.dt_adduserobject" />
+    <FunctionImportMapping FunctionImportName="dt_adduserobject_vcs" FunctionName="Хранилище ERIPModel.dt_adduserobject_vcs" />
+    <FunctionImportMapping FunctionImportName="dt_checkinobject" FunctionName="Хранилище ERIPModel.dt_checkinobject" />
+    <FunctionImportMapping FunctionImportName="dt_checkinobject_u" FunctionName="Хранилище ERIPModel.dt_checkinobject_u" />
+    <FunctionImportMapping FunctionImportName="dt_checkoutobject" FunctionName="Хранилище ERIPModel.dt_checkoutobject" />
+    <FunctionImportMapping FunctionImportName="dt_checkoutobject_u" FunctionName="Хранилище ERIPModel.dt_checkoutobject_u" />
+    <FunctionImportMapping FunctionImportName="dt_displayoaerror" FunctionName="Хранилище ERIPModel.dt_displayoaerror" />
+    <FunctionImportMapping FunctionImportName="dt_displayoaerror_u" FunctionName="Хранилище ERIPModel.dt_displayoaerror_u" />
+    <FunctionImportMapping FunctionImportName="dt_droppropertiesbyid" FunctionName="Хранилище ERIPModel.dt_droppropertiesbyid" />
+    <FunctionImportMapping FunctionImportName="dt_dropuserobjectbyid" FunctionName="Хранилище ERIPModel.dt_dropuserobjectbyid" />
+    <FunctionImportMapping FunctionImportName="dt_generateansiname" FunctionName="Хранилище ERIPModel.dt_generateansiname" />
+    <FunctionImportMapping FunctionImportName="dt_getobjwithprop" FunctionName="Хранилище ERIPModel.dt_getobjwithprop" />
+    <FunctionImportMapping FunctionImportName="dt_getobjwithprop_u" FunctionName="Хранилище ERIPModel.dt_getobjwithprop_u" />
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ERIPModel.dt_getpropertiesbyid_Result">
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_u" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_u">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ERIPModel.dt_getpropertiesbyid_u_Result">
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_vcs" />
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs_u" FunctionName="Хранилище ERIPModel.dt_getpropertiesbyid_vcs_u" />
+    <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol" FunctionName="Хранилище ERIPModel.dt_isundersourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol_u" FunctionName="Хранилище ERIPModel.dt_isundersourcecontrol_u" />
+    <FunctionImportMapping FunctionImportName="dt_removefromsourcecontrol" FunctionName="Хранилище ERIPModel.dt_removefromsourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_setpropertybyid" FunctionName="Хранилище ERIPModel.dt_setpropertybyid" />
+    <FunctionImportMapping FunctionImportName="dt_setpropertybyid_u" FunctionName="Хранилище ERIPModel.dt_setpropertybyid_u" />
+    <FunctionImportMapping FunctionImportName="dt_validateloginparams" FunctionName="Хранилище ERIPModel.dt_validateloginparams" />
+    <FunctionImportMapping FunctionImportName="dt_validateloginparams_u" FunctionName="Хранилище ERIPModel.dt_validateloginparams_u" />
+    <FunctionImportMapping FunctionImportName="dt_vcsenabled" FunctionName="Хранилище ERIPModel.dt_vcsenabled" />
+    <FunctionImportMapping FunctionImportName="dt_verstamp006" FunctionName="Хранилище ERIPModel.dt_verstamp006" />
+    <FunctionImportMapping FunctionImportName="dt_whocheckedout" FunctionName="Хранилище ERIPModel.dt_whocheckedout" />
+    <FunctionImportMapping FunctionImportName="dt_whocheckedout_u" FunctionName="Хранилище ERIPModel.dt_whocheckedout_u" />
+  </EntityContainerMapping>
+</Mapping>
